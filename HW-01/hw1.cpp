@@ -123,12 +123,13 @@ long rotate(long op1, long direction, long number_of_bits)
 			"movq %2, %%rbx;"
 			"movq %3, %%rcx;"
 			"cmpq $1, %%rbx;"
-			"jz 1f;"
+			"if:"
+			"jz else;"
 			"rcrq %%cl, %%rax;"
-			"jmp 2f;"
-			"1:"
+			"jmp fi;"
+			"else:"
 			"rclq %%cl, %%rax;"
-			"2:"
+			"fi:"
 			: "=a"(output)
 			: "r"(op1), "r"(is_left), "r"(number_of_bits)
 			:);
