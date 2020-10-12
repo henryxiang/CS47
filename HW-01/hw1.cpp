@@ -1,4 +1,4 @@
-/* CS47 - Project #1 template */
+/* CS47 - Project #1 solution */
 
 #include <stdio.h>
 #include <stdlib.h>
