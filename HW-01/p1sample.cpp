@@ -128,10 +128,10 @@ asm
 	"cmpq $1, %%rbx;"
 	"jz Rotate_Left;"
 	"rcrq %%cl, %%rax;"
-    "jmp done;"
+    "jmp 2f;"
 "Rotate_Left:"
 	"rclq %%cl, %%rax;"
-"done:"
+"2:"
  	 : "=a" (output)
 	 : "r" (op1), "r" (is_left), "r" (number_of_bits)
 	 : 
