@@ -41,12 +41,16 @@ long mult(long op1, long op2)
 			"movq %1, %%rax;"
 			"movq %1, %%rbx;"
 			"movq %2, %%rcx;"
+			"cmpq $0, %%rcx;"
+			"jz ZERO;"
 			"LOOP:"
 			"cmpq $1, %%rcx;"
 			"jz END;"
 			"addq %%rbx, %%rax;"
 			"decq %%rcx;"
 			"jmp LOOP;"
+			"ZERO:"
+			"xorq %%rax, %%rax;"
 			"END:"
 			: "=a"(output)
 			: "r"(op1), "r"(op2)
