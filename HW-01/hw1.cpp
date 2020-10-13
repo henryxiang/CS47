@@ -37,6 +37,7 @@ long XOR(long op1, long op2)
 long mult(long op1, long op2)
 {
 	long output = 0;
+	long i2 = op2 < 0 ? -op2 : op2;
 	asm(
 			"movq %1, %%rax;"
 			"movq %1, %%rbx;"
@@ -53,9 +54,9 @@ long mult(long op1, long op2)
 			"xorq %%rax, %%rax;"
 			"END:"
 			: "=a"(output)
-			: "r"(op1), "r"(op2)
+			: "r"(op1), "r"(i2)
 			:); /* multiple the second operand to eax, eax has result */
-	return output;
+	return op2 < 0 ? -output : output;
 }
 
 /* 
